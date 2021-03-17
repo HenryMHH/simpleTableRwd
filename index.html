@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<table>
+				<thead>
+					<tr>
+						<td>ID</td>
+						<td>First Name</td>
+						<td>Last Name</td>
+						<td>Email</td>
+						<td>Avatar</td>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			</table>
+		</div>
+
+		<script>
+			fetch('https://reqres.in/api/users?page=2')
+				.then((res) => res.json())
+				.then((res) => {
+					let insertData = ''
+					let tbody = document.querySelector('tbody')
+
+					res.data.map((item) => {
+						insertData =
+							insertData +
+							`<tr><td data-title="ID">${item.id}</td><td data-title="First Name">${item.first_name}</td><td data-title="Last Name">${item.last_name}</td><td data-title="Email">${item.email}</td><td data-title="Avatar">${item.avatar}</td></tr>`
+					})
+
+					tbody.innerHTML = insertData
+				})
+				.catch((err) => console.log(err))
+		</script>
+	</body>
+</html>

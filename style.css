@@ -1,0 +1,41 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	padding: 100px 0;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 0 auto;
+}
+
+td {
+	border: 1px solid black;
+	padding: 10px;
+	font-size: 1.5em;
+}
+
+thead > tr {
+	color: red;
+}
+
+@media only screen and (max-width: 768px) {
+	thead {
+		display: none;
+	}
+
+	td {
+		display: block;
+	}
+	td::before {
+		content: attr(data-title);
+		display: inline-block;
+		width: auto;
+		min-width: 30%;
+		color: red;
+	}
+}
